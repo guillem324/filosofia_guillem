@@ -119,6 +119,7 @@ function crearTarjetas(filosofos) {
 }
 
 function eliminarTarjeta() {
+    event.target.parentElement.remove();
 }
 
 function ordenarNombreAZ() {
