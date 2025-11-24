@@ -34,10 +34,42 @@ function crearTarjetas(filosofos) {
         info.append(filaInfo);
 
         // Añadimos info del país a filaInfo
+        let paisDiv = document.createElement('div');
+        paisDiv.classList.add('info-pais'); 
+        let bandera = document.createElement('img');
+        bandera.src = filosofo.pais.bandera;
+        bandera.alt = `Bandera de ${filosofo.pais.nombre}`;
+        paisDiv.append(bandera);
+        let nombrePais = document.createElement('span');
+        nombrePais.classList.add('pais'); 
+        nombrePais.innerHTML = filosofo.pais.nombre;
+        paisDiv.append(nombrePais);
+        filaInfo.append(paisDiv);
         
         // Añadimos info de la corriente a filaInfo
+        let corrienteDiv = document.createElement('div');
+        corrienteDiv.classList.add('info-corriente'); 
+        let etiquetaCorriente = document.createElement('span');
+        etiquetaCorriente.innerHTML = "Corriente: ";
+        corrienteDiv.append(etiquetaCorriente);
+        let nombreCorriente = document.createElement('span');
+        nombreCorriente.classList.add('corriente'); 
+        nombreCorriente.innerHTML = filosofo.corriente;
+        corrienteDiv.append(nombreCorriente);
+        filaInfo.append(corrienteDiv);
         
         // Añadimos info del arma a filaInfo
+        
+        let armaDiv = document.createElement('div');
+        armaDiv.classList.add('info-arma'); 
+        let etiquetaArma = document.createElement('span');
+        etiquetaArma.innerHTML = "Arma: ";
+        armaDiv.append(etiquetaArma);
+        let nombreArma = document.createElement('span');
+        nombreArma.classList.add('arma'); 
+        nombreArma.innerHTML = filosofo.arma;
+        armaDiv.append(nombreArma);
+        filaInfo.append(armaDiv);
         
 
         // Añadimos caja de habilidades
