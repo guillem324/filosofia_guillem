@@ -194,11 +194,19 @@ function parsearTarjetas(tarjetas){
         filosofo.imagen = tarjeta.querySelector('.photo').src;
         filosofo.pais = {};
         // Completar funció
-        
+        filosofo.pais.nombre = tarjeta.querySelector('.pais').innerHTML;
+        filosofo.pais.bandera = tarjeta.querySelector('.info-pais img').src;
+        filosofo.corriente = tarjeta.querySelector('.corriente').innerHTML;
+        filosofo.arma = tarjeta.querySelector('.arma').innerHTML;
+
         let habilidades = tarjeta.querySelectorAll('.skill');
+        filosofo.habilidades = [];
         for (let habilidad of habilidades){
             let habilidadParaGuardar = {};
             // Completar funció
+            habilidadParaGuardar.habilidad = habilidad.querySelector('.skill-name').innerHTML;
+
+            filosofo.habilidades.push(habilidadParaGuardar);
         }
         filosofosParseados.push(filosofo);
     }
