@@ -118,7 +118,7 @@ function crearTarjetas(filosofos) {
     })
 }
 
-function eliminarTarjeta() {
+function eliminarTarjeta(event) {
     event.target.parentElement.remove();
 }
 
