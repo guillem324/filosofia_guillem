@@ -9,6 +9,12 @@ window.onload = () => {
     let botonesOrdenar = document.querySelectorAll('.sort-btn');
     botonesOrdenar[0].addEventListener('click', ordenarNombreAZ);
     botonesOrdenar[1].addEventListener('click', ordenarNombreZA);
+
+    let botonGuardar = document.querySelector('.save-btn');
+    botonGuardar.addEventListener('click', guardarTarjetas);
+
+    let botonCargar = document.querySelector('.load-btn');
+    botonCargar.addEventListener('click', cargarTarjetas);
 }
 
 function crearTarjetas(filosofos) {
@@ -220,6 +226,19 @@ function guardarTarjetas(){
 
 
 function cargarTarjetas() {
+    let tarjetasGuardadas = localStorage.getItem('tarjetas');
+    if (tarjetasGuardadas) {
+        //aquesta part l'he hagut de mirar perque no sabia com fer-ho
+        let arrayFilosofos = JSON.parse(tarjetasGuardadas);
+        
+        let contenedor = document.querySelector('.cards-container');
+        contenedor.innerHTML = '';
+        
+        crearTarjetas(arrayFilosofos);
+        alert('Tarjetas cargadas desde localStorage');
+    } else {
+        alert('No hay tarjetas guardadas en localStorage');
+    }
 }
 
 const filosofos = [
