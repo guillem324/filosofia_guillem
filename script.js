@@ -166,9 +166,24 @@ function crearNuevaTarjeta(event) {
     nuevoFilosofo.pais = {};
     nuevoFilosofo.pais.nombre = document.querySelector('.create-card-form .pais').value;
     // Completar la función
+    nuevoFilosofo.pais.bandera = document.querySelector('.create-card-form .bandera').value;
+    nuevoFilosofo.corriente = document.querySelector('.create-card-form .corriente').value;
+    nuevoFilosofo.arma = document.querySelector('.create-card-form .arma').value;
 
 
-    // crearTarjetas(nuevoFilosofo);
+    //la part de les habilitats ho he hagut de mirar per saber com fer-ho
+    let habilidadesInputs = document.querySelectorAll('.create-card-form .skills');
+    nuevoFilosofo.habilidades = [];
+    let nombresHabilidades = ['Sabiduría', 'Oratoria', 'Lógica', 'Innovación'];
+    for (let i = 0; i < habilidadesInputs.length; i++) {
+        let habilidad = {
+            habilidad: nombresHabilidades[i],
+            nivel: parseInt(habilidadesInputs[i].value)
+        };
+        nuevoFilosofo.habilidades.push(habilidad);
+    }
+    crearTarjetas([nuevoFilosofo]);
+    document.querySelector('.create-card-form form').reset(); // això ho he mirat perque em donava error si no posava això , es per netejar el formulari
 }
 
 function parsearTarjetas(tarjetas){
