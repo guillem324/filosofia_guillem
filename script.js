@@ -5,6 +5,10 @@ window.onload = () => {
     // Crear handlers para los botones de control
     let botonCrearTarjeta = document.querySelector('.create-btn');
     botonCrearTarjeta.addEventListener('click',crearNuevaTarjeta);
+
+    let botonesOrdenar = document.querySelectorAll('.sort-btn');
+    botonesOrdenar[0].addEventListener('click', ordenarNombreAZ);
+    botonesOrdenar[1].addEventListener('click', ordenarNombreZA);
 }
 
 function crearTarjetas(filosofos) {
@@ -131,15 +135,28 @@ function ordenarNombreAZ() {
     });
 
     // Eliminar totes les targetes de l'array 'tarjeta'
+        let contenedor = document.querySelector('.cards-container');
+        contenedor.innerHTML = '';
     // Completar codi
 
     // Afegir 'tarjetasOrdenadas' al contenidor de cards
-    let contenedor = document.querySelector('.cards-container');
+    tarjetasOrdenadas.forEach(tarjeta => contenedor.append(tarjeta));
     // Completar codi
 }
 
 function ordenarNombreZA() {
+    let tarjetas = Array.from(document.querySelectorAll('.card'));
+    let tarjetasOrdenadas = tarjetas.sort((tarjetaA, tarjetaB) => {
+        let nombre1 = tarjetaA.querySelector('h3').innerHTML;
+        let nombre2 = tarjetaB.querySelector('h3').innerHTML;
+        return nombre2.localeCompare(nombre1);
+    });
+
+    let contenedor = document.querySelector('.cards-container');
+    contenedor.innerHTML = '';
+    tarjetasOrdenadas.forEach(tarjeta => contenedor.append(tarjeta));
 }
+
 
 function crearNuevaTarjeta(event) {
     event.preventDefault();
@@ -149,6 +166,7 @@ function crearNuevaTarjeta(event) {
     nuevoFilosofo.pais = {};
     nuevoFilosofo.pais.nombre = document.querySelector('.create-card-form .pais').value;
     // Completar la función
+
 
     // crearTarjetas(nuevoFilosofo);
 }
