@@ -59,7 +59,7 @@ function crearTarjetas(filosofos) {
         filaInfo.append(corrienteDiv);
         
         // Añadimos info del arma a filaInfo
-        
+
         let armaDiv = document.createElement('div');
         armaDiv.classList.add('info-arma'); 
         let etiquetaArma = document.createElement('span');
@@ -79,14 +79,37 @@ function crearTarjetas(filosofos) {
         // Añadimos una a una las habilidades
         for (let infoHabilidad of filosofo.habilidades) {
             // Añadimos una caja de habilidad
-            
+            let skillDiv = document.createElement('div');
+            skillDiv.classList.add('skill');
             // Añadimos contenido caja de habilidad
             // 1.Icono de habilidad
-            
+            let icono = document.createElement('img');
+            icono.src = "https://via.placeholder.com/16";
+            icono.alt = `Icono de ${infoHabilidad.habilidad}`;
+            skillDiv.append(icono);
             // 2.Etiqueta de habilidad
+            let nombreHabilidad = document.createElement('span');
+            nombreHabilidad.classList.add('skill-name');
+            nombreHabilidad.innerHTML = infoHabilidad.habilidad;
+            skillDiv.append(nombreHabilidad);
             
             // 2.Barra de habilidad
+            let barraHabilidad = document.createElement('div');
+            barraHabilidad.classList.add('skill-bar');
+            let nivelHabilidad = document.createElement('div');
+            nivelHabilidad.classList.add('level');
+            let porcentaje = (infoHabilidad.nivel / 4) * 100;
+            nivelHabilidad.style.width = `${porcentaje}%`;
+            barraHabilidad.append(nivelHabilidad);
+            skillDiv.append(barraHabilidad);
+            habilidades.append(skillDiv);
             
+            //poso el botó d'eliminar per cada targeta
+        let botonEliminar = document.createElement('div');
+        botonEliminar.innerHTML = '&#x2716'; // Aspa
+        botonEliminar.classList.add('botonEliminar');
+        botonEliminar.addEventListener('click', eliminarTarjeta);
+        tarjeta.append(botonEliminar);
         }
 
         // Añadimos tarjeta creada al contenedor de tarjetas
